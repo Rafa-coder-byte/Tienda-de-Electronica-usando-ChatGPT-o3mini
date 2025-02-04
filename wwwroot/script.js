@@ -107,13 +107,17 @@ function buscarProductos(termino) {
 document.addEventListener('DOMContentLoaded', () => {
     fetchProducts();
 
+
     // Abrir modal de producto al hacer clic en "Ver detalles"
     document.getElementById('productos-container').addEventListener('click', (e) => {
         if (e.target.tagName === 'BUTTON') {
+            console.log("Botón clickeado, redirigiendo...");
             const id = parseInt(e.target.getAttribute('data-id'));
-            abrirModalProducto(id);
+            // Redirecciona a la vista de detalles del producto
+            window.location.href = `/ProductsDetails/Details/${id}`;
         }
     });
+
 
     // Cerrar modal de producto
     document.querySelector('#modal-producto .cerrar').addEventListener('click', () => {

@@ -1,0 +1,67 @@
+﻿@model mi_tienda_de_electrónica.Models.Product
+
+@{
+    ViewData["Title"] = "Detalles del Producto";
+}
+
+<link rel="stylesheet" href="/product-style.css">
+
+<header>
+    <h1>Tienda Electrónica</h1>
+    <nav>
+        <ul>
+            <li><a asp-controller="Home" asp-action="Index" id="ver-productos">Productos</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+<div class="container">
+    <h2>@Model.Name</h2>
+
+    <div class="product-info">
+        <img src="@Model.ImageUrl" alt="Imagen de @Model.Name">
+        <p class="price">@Model.Price.ToString("C")</p>
+        <p><strong>Descripción:</strong> @Model.Description</p>
+    </div>
+
+    <hr />
+    <h3>Reseñas</h3>
+
+    @if (Model.Reviews != null && Model.Reviews.Any())
+    {
+        foreach (var review in Model.Reviews.OrderByDescending(r => r.CreatedAt))
+        {
+            <div class="review">
+                <p><strong>@review.Author</strong> - ⭐ @review.Rating/5</p>
+                <p>@review.Comment</p>
+                <p><small>@review.CreatedAt.ToShortDateString()</small></p>
+            </div>
+        }
+    }
+    else
+    {
+        <p>No hay reseñas para este producto.</p>
+    }
+
+    <hr />
+    <h3>Agregar Reseña</h3>
+    <div class="review-form">
+        <form asp-action="AddReview" method="post">
+            <input type="hidden" name="productId" value="@Model.Id" />
+            <div class="form-group">
+                <label for="Author">Tu Nombre</label>
+                <input type="text" class="form-control" name="Author" required />
+            </div>
+            <div class="form-group">
+                <label for="Rating">Calificación (1 a 5)</label>
+                <input type="number" class="form-control" name="Rating" min="1" max="5" required />
+            </div>
+            <div class="form-group">
+                <label for="Comment">Comentario</label>
+                <textarea class="form-control" name="Comment"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar Reseña</button>
+        </form>
+    </div>
+</div>
