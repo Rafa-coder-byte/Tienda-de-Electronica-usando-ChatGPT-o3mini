@@ -1,0 +1,11 @@
+﻿@model mi_tienda_de_electrónica.Models.Product
+@{
+    ViewData["Title"] = "Eliminar Producto";
+}
+<h2>Eliminar Producto</h2>
+<form asp-action="DeleteConfirmed"  method="post">
+    <input type="hidden" asp-for="Id" />
+    <p>¿Estás seguro de eliminar el producto: <strong>@Model.Name</strong>?</p>
+    <button type="submit">Eliminar</button> |
+    <a asp-action="Index">Cancelar</a>
+</form>

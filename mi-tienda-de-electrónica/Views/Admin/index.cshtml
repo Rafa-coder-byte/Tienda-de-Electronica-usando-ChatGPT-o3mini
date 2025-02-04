@@ -1,0 +1,38 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model IEnumerable<mi_tienda_de_electrónica.Models.Product>
+@{
+    ViewData["Title"] = "Panel de Administración";
+}
+<h2>Panel de Administración - Gestionar Productos</h2>
+<p>
+    <a asp-action="Create">Agregar Nuevo Producto</a> |
+    <a asp-action="Logout">Logout</a>
+</p>
+<table border="1" cellpadding="5">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Imagen</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Id</td>
+                <td>@product.Name</td>
+                <td>@product.Description</td>
+                <td>@product.Price</td>
+                <td><img src="@product.ImageUrl" alt="@product.Name" width="50" /></td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@product.Id">Editar</a> |
+                    <a asp-action="Delete" asp-route-id="@product.Id">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
