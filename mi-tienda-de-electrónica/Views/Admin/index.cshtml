@@ -1,0 +1,61 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model IEnumerable<mi_tienda_de_electrónica.Models.Product>
+@{
+    ViewData["Title"] = "Panel de Administración";
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/style.css" />
+    <!-- Si deseas usar Bootstrap, descomenta la siguiente línea -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" /> -->
+</head>
+<body>
+    <header>
+        <h1>Tienda Electrónica</h1>
+        <nav>
+            <ul>
+                <li><a asp-controller="Home" asp-action="Index" id="ver-productos">Productos</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="admin-container">
+        <h2>Panel de Administración - Gestionar Productos</h2>
+        <p>
+            <a asp-action="Create" class="btn btn-success">Agregar Nuevo Producto</a> |
+            <a asp-action="Logout" class="btn btn-secondary">Logout</a>
+        </p>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Precio</th>
+                    <th>Imagen</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model)
+                {
+                    <tr>
+                        <td>@product.Id</td>
+                        <td>@product.Name</td>
+                        <td>@product.Description</td>
+                        <td>@product.Price</td>
+                        <td><img src="@product.ImageUrl" alt="@product.Name" width="50" /></td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@product.Id" class="btn btn-warning btn-sm">Editar</a>  |
+                            <a asp-controller="Admin" asp-action="Delete" asp-route-id="@product.Id" class="btn btn-danger btn-sm">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
