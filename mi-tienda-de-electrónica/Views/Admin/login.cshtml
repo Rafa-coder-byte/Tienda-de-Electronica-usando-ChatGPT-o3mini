@@ -1,22 +1,47 @@
 ﻿@{
     ViewData["Title"] = "Admin Login";
+    Layout = null; // Puedes definir un Layout si lo prefieres para las páginas de autenticación
 }
-<h2>Admin Login</h2>
-<form method="post" asp-action="Login">
-    <div>
-        <label>Username:</label>
-        <input type="text" name="username" />
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/style.css" />
+    <!-- Si deseas usar Bootstrap, descomenta la siguiente línea -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" /> -->
+
+</head>
+<body>
+    <div class="login-container">
+        <h2>Admin Login</h2>
+        <form method="post" asp-action="Login" autocomplete="off">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username" class="form-control" autocomplete="new-password" placeholder="Ingrese su usuario" required />
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" class="form-control" autocomplete="new-password" placeholder="Ingrese su contraseña" required />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+            @if (ViewBag.Error != null)
+            {
+                <div style="color:red">@ViewBag.Error</div>
+            }
+        </form>
     </div>
-    <div>
-        <label>Password:</label>
-        <input type="password" name="password" />
-    </div>
-    <div>
-        <button type="submit">Login</button>
-    </div>
-    @if (ViewBag.Error != null)
-    {
-        <div style="color:red">@ViewBag.Error</div>
-    }
-</form>
+
+    <!--  <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("username").setAttribute("autocomplete", "off");
+            document.getElementById("password").setAttribute("autocomplete", "off");
+        });
+        </script>  -->
+    
+</body>
+</html>
 

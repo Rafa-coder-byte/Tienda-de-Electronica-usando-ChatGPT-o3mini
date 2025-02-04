@@ -126,7 +126,7 @@ namespace mi_tienda_de_electrónica.Controllers
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync("CookieAuth");
-            return RedirectToAction("Login");
+            return RedirectToAction("Index", "Home");
         }
     }
 }

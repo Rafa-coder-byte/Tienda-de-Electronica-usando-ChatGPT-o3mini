@@ -17,7 +17,11 @@ builder.Services.AddAuthentication("CookieAuth")
     .AddCookie("CookieAuth", options =>
     {
         options.LoginPath = "/Admin/Login";
+        options.LogoutPath = "/Admin/Logout";
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(20); // La sesión expira después de 20 min de inactividad
+        options.SlidingExpiration = false; // No renueva la cookie automáticamente
     });
+
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
@@ -26,6 +30,7 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
 }
+
 
 // Servir archivos estáticos desde wwwroot
 app.UseStaticFiles();

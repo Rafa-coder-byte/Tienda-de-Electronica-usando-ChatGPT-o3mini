@@ -2,14 +2,11 @@
     ViewData["Title"] = "Tienda Electrónica";
 }
 
-@if (User.Identity.IsAuthenticated)
+@if (true)
 {
-<p><a asp-controller="Admin" asp-action="Index">Ir al Panel de Administración</a></p>
+    <a asp-controller="Admin" asp-action="Index" class="btn-admin">Panel de Administración</a>
 }
-else
-{
-<p><a asp-controller="Admin" asp-action="Login">Iniciar sesión como administrador</a></p>
-}
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -27,6 +24,7 @@ else
             <ul>
                 <li><a href="#" id="ver-productos">Productos</a></li>
                 <li><a href="#" id="ver-carrito">Carrito (<span id="carrito-count">0</span>)</a></li>
+              
             </ul>
         </nav>
     </header>

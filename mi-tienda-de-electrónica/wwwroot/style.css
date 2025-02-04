@@ -63,12 +63,16 @@ header {
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 5px;
-    width: 250px;
+    flex: 0 1 250px;
     margin: 15px;
     padding: 15px;
     text-align: center;
     box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+    display: flex; /* Agregado: habilita flexbox */
+    flex-direction: column; /* Agregado: organiza los elementos verticalmente */
 }
+
+
 
     .producto img {
         width: 100%;
@@ -92,7 +96,9 @@ header {
         padding: 10px;
         cursor: pointer;
         border-radius: 3px;
+        margin-top: auto; /* Agregado: empuja el botón al final del contenedor flex */
     }
+
 
 /* Modales */
 .modal {
@@ -106,6 +112,18 @@ header {
     overflow: auto;
     background: rgba(0,0,0,0.5);
 }
+
+#modal-imagen {
+    max-width: 100%;
+    max-height: 300px; /* Ajusta este valor según necesites */
+    width: auto;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    object-fit: contain; /* Esto hace que la imagen mantenga su proporción */
+    background-color: #f0f0f0; /* Para que el fondo no se vea raro */
+}
+
 
 .modal-content {
     background: #fff;
@@ -147,4 +165,134 @@ header {
     justify-content: space-between;
     padding: 5px 0;
     border-bottom: 1px solid #ddd;
+}
+
+/*Admin*/
+.admin-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
+
+.btn-admin {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparente */
+    color: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s, opacity 0.3s;
+    opacity: 0.6;
+}
+
+    .btn-admin:hover {
+        background-color: rgba(0, 0, 0, 0.8); /* Se oscurece un poco */
+        opacity: 1; /* Se hace más visible */
+    }
+
+
+/* Estilos para la tabla de productos en la parte de administracion*/
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+    .table th, .table td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
+
+    .table th {
+        background-color: #007bff;
+        color: white;
+    }
+
+.table-striped tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+.table img {
+    display: block;
+    max-width: 50px;
+    height: auto;
+}
+
+
+/* Estilos para el área de autenticación */
+.login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
+
+
+    .login-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .login-container .form-group {
+        margin-bottom: 15px;
+    }
+
+    .login-container label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .login-container input.form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .login-container button.btn {
+        width: 100%;
+        padding: 10px;
+        background: #007bff;
+        border: none;
+        border-radius: 4px;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+        .login-container button.btn:hover {
+            background: #0056b3;
+        }
+
+
+a {
+    color: #007bff; /* Color azul predeterminado */
+    text-decoration: none;
+}
+
+    a:visited {
+        color: #007bff !important; /* Forzar el color para que no cambie a morado */
+    }
+
+@media (max-width: 768px) {
+    #productos-container {
+        padding: 10px;
+    }
+
+    .producto {
+        flex: 0 1 90%; /* Cada producto ocupará el 90% del ancho del contenedor */
+        margin: 10px auto; /* Centramos el producto y reducimos un poco el margen */
+    }
 }
