@@ -8,6 +8,8 @@
             public string Description { get; set; }
             public decimal Price { get; set; }
             public string ImageUrl { get; set; }
+        // Nueva propiedad para reseñas
+        public ICollection<Review> Reviews { get; set; } = new List<Review>();
 
 
         // Constructor personalizado (puedes inicializar valores por defecto si lo necesitas)
