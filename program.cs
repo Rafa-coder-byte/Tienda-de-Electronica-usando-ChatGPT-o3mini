@@ -7,6 +7,7 @@ using System.Linq.Expressions;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 // Agregar servicios MVC y la DB en memoria (para demo)
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -30,6 +31,7 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
 }
+
 
 
 // Servir archivos estáticos desde wwwroot

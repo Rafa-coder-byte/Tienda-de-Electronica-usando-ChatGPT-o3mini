@@ -8,10 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Shared\_Layout.cshtml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="Views\Home\index.cshtml" />
     <None Include="wwwroot\admin-style.css" />
     <None Include="wwwroot\script.js" />
     <None Include="wwwroot\style.css" />
+    <None Include="wwwroot\uploads\Iphone12.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,6 +26,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\uploads\" />
   </ItemGroup>
 
 </Project>

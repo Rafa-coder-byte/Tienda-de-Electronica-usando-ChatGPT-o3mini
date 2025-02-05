@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Taller especializado en la reparación de dispositivos electrónicos en Marianao, La Habana, Cuba. Reparación de celulares, bocinas, televisores y más.">
+    <meta name="keywords" content="reparación de dispositivos electrónicos, celulares, bocinas, televisores, La Habana, Cuba, Marianao">
+    <title>@ViewData["Title"] - Tienda Electrónica</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Tienda Electrónica</h1>
+        <nav>
+            <ul>
+                <li><a asp-controller="Home" asp-action="Index">Productos</a></li>
+                <li><a href="#" id="ver-carrito">Carrito (<span id="carrito-count">0</span>)</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- AQUÍ ES DONDE SE RENDERIZAN LAS VISTAS -->
+    <div class="container">
+        @RenderBody()  <!-- IMPORTANTE, SIN ESTO FALLA -->
+    </div>
+
+    <!-- Modal del Carrito -->
+    <div id="modal-carrito" class="modal">
+        <div class="modal-content">
+            <span class="close" id="cerrar-carrito">&times;</span>
+            <h2>Carrito de Compras</h2>
+            <div id="carrito-items"></div>
+            <p>Total: $<span id="carrito-total">0.00</span></p>
+        </div>
+    </div>
+
+    <script src="~/script.js"></script>
+</body>
+</html>
+

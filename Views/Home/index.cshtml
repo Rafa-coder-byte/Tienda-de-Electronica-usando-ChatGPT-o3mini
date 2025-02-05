@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Tienda Electrónica";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @if (true)
@@ -7,29 +8,6 @@
     <a asp-controller="Admin" asp-action="Index" class="btn-admin">Panel de Administración</a>
 }
 
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Taller especializado en la reparación de dispositivos electrónicos en Marianao, La Habana, Cuba. Reparación de celulares, bocinas, televisores y más.">
-    <meta name="keywords" content="reparación de dispositivos electrónicos, celulares, bocinas, televisores, La Habana, Cuba, Marianao">
-    <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="~/style.css" />
-</head>
-<body>
-    <!-- Encabezado -->
-    <header>
-        <h1>Tienda Electrónica</h1>
-        <nav>
-            <ul>
-                <li><a href="#" id="ver-productos">Productos</a></li>
-                <li><a href="#" id="ver-carrito">Carrito (<span id="carrito-count">0</span>)</a></li>
-              
-            </ul>
-        </nav>
-    </header>
 
     <!-- Buscador -->
     <section id="buscador">
@@ -44,7 +22,6 @@
         </section>
     </main>
 
-
     <!-- Modal de detalles del producto -->
     <div id="modal-producto" class="modal">
         <div class="modal-content">
@@ -57,19 +34,5 @@
         </div>
     </div>
 
-    <!-- Modal para el carrito de compras -->
-    <div id="modal-carrito" class="modal">
-        <div class="modal-content">
-            <span class="cerrar" id="cerrar-carrito">&times;</span>
-            <h2>Carrito de Compras</h2>
-            <div id="carrito-items">
-                <!-- Items del carrito -->
-            </div>
-            <p><strong>Total: </strong>$<span id="carrito-total">0</span></p>
-            <button id="btn-finalizar">Finalizar Compra</button>
-        </div>
-    </div>
 
-    <script src="~/script.js"></script>
-</body>
-</html>
+

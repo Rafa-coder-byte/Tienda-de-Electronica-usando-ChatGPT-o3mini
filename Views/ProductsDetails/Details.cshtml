@@ -2,21 +2,11 @@
 
 @{
     ViewData["Title"] = "Detalles del Producto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<link rel="stylesheet" href="/product-style.css">
 
-<header>
-    <h1>Tienda Electrónica</h1>
-    <nav>
-        <ul>
-            <li><a asp-controller="Home" asp-action="Index" id="ver-productos">Productos</a></li>
-        </ul>
-    </nav>
-</header>
-
-
-<div class="container">
+<div class="containerDetalles">
     <h2>@Model.Name</h2>
 
     <div class="product-info">
@@ -24,6 +14,10 @@
         <p class="price">@Model.Price.ToString("C")</p>
         <p><strong>Descripción:</strong> @Model.Description</p>
     </div>
+
+
+    <!-- Botón para agregar al carrito -->
+    <button id="btn-agregar-carrito">Agregar al carrito</button>
 
     <hr />
     <h3>Reseñas</h3>
@@ -65,3 +59,17 @@
         </form>
     </div>
 </div>
+
+<!-- Modal para el carrito de compras -->
+<div id="modal-carrito" class="modal">
+    <div class="modal-content">
+        <span class="cerrar" id="cerrar-carrito">&times;</span>
+        <h2>Carrito de Compras</h2>
+        <div id="carrito-items">
+            <!-- Items del carrito -->
+        </div>
+        <p><strong>Total: </strong>$<span id="carrito-total">0</span></p>
+        <button id="btn-finalizar">Finalizar Compra</button>
+    </div>
+</div>
+
